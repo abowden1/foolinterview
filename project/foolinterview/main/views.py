@@ -18,7 +18,9 @@ def home(request):
 def article(request, uuid):
     a = Articles()
     result = a.get_article_by_uuid(uuid=uuid)
+    primary_image_url = result['images'][0]['url']
     context = {'article': result,
+               'header_image': primary_image_url,
                'quotes': Quotes().quotes}
     return render(request, 'main/article.html', context=context)
 

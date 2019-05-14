@@ -2,35 +2,56 @@
 
 
 {% block body %}
-<style>
-    #sidebar{
-        background-color: #b3b3cc;
-    }
-    #home{
-        padding-top: 10px;
-    }
-    .border-left{
-        border-width: 3px !important;
-    }
-</style>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-8">
-            <h1>{{article.headline}}</h1>
-            {{article.body|safe}}
+
+<div id="nav-container" class="container-fluid" style="background-color: #212428">
+        <div class="navbar" align="right">
+        <div id="home" >
+            <a id="right-button" href="/" class="btn btn-small btn-primary">Home</a>
         </div>
-        <div id="sidebar" class="col-lg-4 border-left border-dark">
-            <div class="container">
-                <div id="home" align="right">
-                    <a href="/" class="btn btn-small btn-primary">Home</a>
-                </div>
+    </div>
+    </div>
+<div class="container-fluid">
+    <div id="primary" class="row">
+        <div class="col-lg-8">
+            <div class="jumbotron" align="center">
+                <h1>{{article.headline}}</h1>
             </div>
+            <div id="content" class="card border" align="left">
+                {{article.body|safe}}
+            </div>
+        </div>
+        <div id="sidebar" class="col-lg-4 border border-dark">
             <div id="quotes">
-                {% for quote in quotes %}
-                <p>{{quote.Symbol}} | {{quote.ClosePrice.Amount}} ({{quote.CurrencyCode}})</p>
-                {% endfor %}
+                <table class="table table-dark">
+                      <thead class="thead">
+                        <tr>
+                          <th scope="col"></th>
+                          <th scope="col">Company</th>
+                          <th scope="col">Symbol</th>
+                          <th scope="col">Value</th>
+                        </tr>
+                      </thead>
+                    <tbody>
+                        {% for quote in quotes %}
+                            <tr>
+                              <th scope="row"></th>
+                              <td>{{quote.CompanyName}}</td>
+                              <td>{{quote.Symbol}}</td>
+                              <td>
+                                  <a href="https://www.fool.com/quote/{{quote.Exchange}}/{{quote.SeoName}}/{{quote.Symbol}}/">
+                                    {{quote.ClosePrice.Amount}} ({{quote.CurrencyCode}})
+                                  </a>
+                              </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
 {% endblock %}
+
+<!--{% for quote in quotes %}-->
+<!--<p>{{quote.Symbol}} | {{quote.ClosePrice.Amount}} ({{quote.CurrencyCode}})</p>-->
+<!--{% endfor %}-->
