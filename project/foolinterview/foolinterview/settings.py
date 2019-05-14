@@ -37,8 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'articles',
-    'quotes',
     'main'
 ]
 
@@ -121,3 +119,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CONTENT_FILE = BASE_DIR + '/content/content_api.json'
+QUOTES_FILE = BASE_DIR + '/content/quotes_api.json'
+
+FEATURED_ARTICLE_SLUG = '10-promise'
+SECONDARY_ARTICLE_COUNT = 3

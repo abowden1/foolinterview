@@ -1,0 +1,21 @@
+{% extends 'main/layouts.html' %}
+
+{% block primary %}
+    <div class="container" align="center">
+        <h1>
+            <a href="/articles/a/{{primary.uuid}}">{{ primary.headline }}</a>
+        </h1>
+        <h4 align="center">{{primary.promo}}</h4>
+    </div>
+{% endblock %}
+
+{% block secondary %}
+
+{% for article in secondary %}
+    <div class="container">
+        <a href="/articles/a/{{article.uuid}}">{{ article.headline }}</a>
+        <p align="center">{{ article.promo }}</p>
+    </div>
+{% endfor %}
+
+{% endblock %}

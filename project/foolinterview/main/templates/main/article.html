@@ -1,0 +1,36 @@
+{% extends 'main/layouts.html' %}
+
+
+{% block body %}
+<style>
+    #sidebar{
+        background-color: #b3b3cc;
+    }
+    #home{
+        padding-top: 10px;
+    }
+    .border-left{
+        border-width: 3px !important;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-8">
+            <h1>{{article.headline}}</h1>
+            {{article.body|safe}}
+        </div>
+        <div id="sidebar" class="col-lg-4 border-left border-dark">
+            <div class="container">
+                <div id="home" align="right">
+                    <a href="/" class="btn btn-small btn-primary">Home</a>
+                </div>
+            </div>
+            <div id="quotes">
+                {% for quote in quotes %}
+                <p>{{quote.Symbol}} | {{quote.ClosePrice.Amount}} ({{quote.CurrencyCode}})</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
