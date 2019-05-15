@@ -1,8 +1,13 @@
 import sys
 sys.path.append('..')
 
+import json
+
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+
 from .utils import Articles, Quotes
 from .models import Article_Comments
 
@@ -21,10 +26,8 @@ def article(request, uuid):
     result = a.get_article_by_uuid(uuid=uuid)
     primary_image_url = result['images'][0]['url']
     author = result['authors'][0]['byline']
-    try:
-        comments = get_comments(uuid)
-    except:
-        comments = []
+    comments = get_comments(uuid)
+
     context = {'article': result,
                'author': author,
                'header_image': primary_image_url,
@@ -50,10 +53,18 @@ def get_images(articles):
         results.append(article)
     return results
 
-def addcomment(request, comment):
-    print("POSTED!")
+@csrf_exempt #simplification since we are allowing anonymous comments
+def addcomment(request):
+    data = json.loads(request.body.decode('utf8'))
+    if request.method == 'POST':
+        Article_Comments.objects.create(article_reference=data['uuid'], comment=data['comment'])
+        return HttpResponse(status=200)
+    else:
+        return HttpResponse(status=400)
 
 def get_comments(uuid):
-    return Article_Comments.objects.get(article_reference=uuid)
-
-# get_comments('123es')
+    try:
+        comments = Article_Comments.objects.filter(article_reference=uuid)
+    except:
+        comments = None
+    return comments

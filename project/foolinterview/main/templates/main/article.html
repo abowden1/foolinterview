@@ -2,7 +2,7 @@
 
 
 {% block body %}
-<div id="nav-container" class="container top-bar article-top-bar">
+<div id="nav-container rcorners2" class="container top-bar article-top-bar">
             <div class="navbar" align="right">
             <div id="home" >
                 <a id="right-button" href="/" class="btn btn-small btn-primary">Home</a>
@@ -13,7 +13,7 @@
     <div class="container-fluid" style="background: url({{header_image}})">
         <div id="primary" class="row">
             <div class="col-lg-8">
-                <div id="article-headline" class="jumbotron" align="center">
+                <div id="jumbotron-secondary" class="jumbotron" align="center">
                     <h1>{{article.headline}}</h1>
                     <br>
                     <h6>Written By:</h6>
@@ -56,12 +56,31 @@
                     </div>
 
                 </div>
-                <div class="container">
-                    <form action="/addcomment" method="post">
-                        {% csrf_token %}
-                        <input type="text" name="comment">
-                        <button id="submit-comment" class="btn btn-primary" type="submit">Comment</button>
-                    </form>
+                <br>
+                <div class="container form-group" align="center">
+                    <input id="uuid" type="hidden" value="{{article.uuid}}">
+                    <label for="comment"><h4>Add Comment:</h4></label>
+                    <textarea id="comment" rows="8" cols="33" name="comment" class="input-lg"></textarea>
+                    <button id="submit-comment" class="btn btn-primary btn-sm" type="submit">
+                        Submit
+                    </button>
+                </div>
+                <br>
+                <div id="display-comments-box" class="container border">
+                    <h3 align="center">Comments</h3>
+                    <br>
+                    {% if comments %}
+                    {% for comment in comments %}
+                    <div class="container border-dark">
+                        <h8><b>Anonomous User:</b></h8>
+                        <p>{{comment}}</p>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <div class="container border-dark">
+                        <p align="center">There are no comments</p>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -71,7 +90,3 @@
 <script src="{% static 'main/js/jquery-3.1.1.min.js' %}"></script>
 <script src="{% static 'main/js/article.js' %}"></script>
 {% endblock %}
-
-<!--{% for quote in quotes %}-->
-<!--<p>{{quote.Symbol}} | {{quote.ClosePrice.Amount}} ({{quote.CurrencyCode}})</p>-->
-<!--{% endfor %}-->

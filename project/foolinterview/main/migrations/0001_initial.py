@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
             name='Article_Comments',
             fields=[
                 ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('article_reference', models.UUIDField()),
+                ('article_reference', models.TextField()),
                 ('comment', models.TextField(max_length=1000)),
             ],
         ),

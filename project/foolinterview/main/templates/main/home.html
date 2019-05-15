@@ -5,7 +5,7 @@
 <body>
     <div class="container content-inner">
         <div id="primary-article" class="container-fluid" style="background-image: url({{primary_image}}">
-            <div class="jumbotron">
+            <div id="jumbotron-primary" class="jumbotron">
                 <div class="container" align="center">
                     <h1>
                         {{ primary.headline }}
@@ -24,34 +24,30 @@
                 </div>
             </div>
         </div>
-        <div class="container content-inner">
 
-            <div id="article-cards" class="container">
-                {% for article in secondary %}
-                <div class="card border-dark" style="width: 18rem;">
-
-                    <div class="card-body">
-                        <div class="container">
-                            <img class="card-img-top" src="{{article.primary_image}}">
-                        </div>
-                        <h4 class="card-title" align="center">
-                            {{ article.headline }}
-                        </h4>
-                        <p class="card-text" align="center">
-                            <!--{{ article.promo }}-->
-                        </p>
+        <div id="card-box" class="card">
+            {% for article in secondary %}
+            <div id="card-container" class="card border-dark" style="width: 18rem;">
+                <div id="cards" class="card-body">
+                    <div class="container">
+                        <img class="card-img-top" src="{{article.primary_image}}">
                     </div>
-                    <div align="center">
-                        <a href="/articles/a/{{article.uuid}}">
-                        <button type="button" class="btn btn-outline-dark">
-                            Read More
-                        </button>
-                    </a>
-                    </div>
+                    <br>
+                    <h4 class="card-title" align="center">
+                        {{ article.headline }}
+                    </h4>
+                    <p class="card-text" align="center">
+                    </p>
                 </div>
-                {% endfor %}
+                <div align="center">
+                    <a href="/articles/a/{{article.uuid}}">
+                    <button type="button" class="btn btn-outline-dark">
+                        Read More
+                    </button>
+                </a>
+                </div>
             </div>
-
+            {% endfor %}
         </div>
     </div>
 </body>
