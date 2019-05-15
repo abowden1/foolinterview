@@ -51,7 +51,7 @@ def get_images(articles):
     return results
 
 def addcomment(request, comment):
-    pass
+    print("POSTED!")
 
 def get_comments(uuid):
     return Article_Comments.objects.get(article_reference=uuid)
