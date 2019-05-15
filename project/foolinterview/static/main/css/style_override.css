@@ -1,0 +1,35 @@
+#sidebar{
+    background-color: #A0A0A0;
+    opacity: 0.95;
+    border-width: 3px !important;
+}
+#home{
+    padding-top: 10px;
+}
+#home{
+    padding-bottom: 20px;
+}
+#primary{
+    background: url({{header_image}});
+}
+#right-button{
+    float: right;
+}
+.border{
+    border-width: 5px !important;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+.jumbotron{
+    opacity: .75;
+    border-width: 4px !important;
+}
+.navbar{
+    background-color: #212428;
+}
+.thead{
+    background-color: #1c1d1e;
+}
+.article-top-bar{
+     background-color: white;
+}

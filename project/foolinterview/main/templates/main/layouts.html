@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,59 +7,21 @@
      initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link href="main/css/style.css" rel="stylesheet" type="text/css"/>
-    <link href="main/css/bootstrap_override.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main/css/bootstrap.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'main/css/font-awesome.min.css' %}" type="text/css">
     <title>Foolish Articles</title>
 </head>
-<style>
-    #sidebar{
-        background-color: #A0A0A0;
-        opacity: 0.95;
-        border-width: 3px !important;
-    }
-    #home{
-        padding-top: 10px;
-    }
-    #home{
-        padding-bottom: 20px;
-    }
-    #primary{
-        background: url({{header_image}});
-    }
-    #right-button{
-        float: right;
-    }
-    .border{
-        border-width: 5px !important;
-        padding-top: 10px;
-        padding-left: 10px;
-    }
-    .jumbotron{
-        opacity: .75;
-        border-width: 4px !important;
-    }
-    .navbar{
-        background-color: #212428;
-    }
-    .thead{
-        background-color: #1c1d1e;
-    }
-</style>
-{% block body %}
+
+
 <body>
-    <div class="jumbotron" align="center">
-        {% block primary %}
-        {% endblock %}
-    </div>
-    <div class="containter">
-        <div class="container content-inner" align="center">
-            {% block secondary %}
-            <h4>Nothing Added</h4>
-            {% endblock %}
-        </div>
-    </div>
-</body>
+{% block body %}
+
 {% endblock %}
+<script src="{% static 'main/js/jquery-3.1.1.min.js' %}"></script>
+<script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'main/js/main.js' %}"></script>
+</body>
+
 </html>

@@ -20,5 +20,7 @@ from django.conf.urls import url
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', include('main.urls')),
-    url(r'^articles/', include('main.urls'))
+    url(r'^articles/', include('main.urls')),
+    url(r'^shuffle', include('main.urls')),
+    url(r'^addcomment', include('main.urls'))
 ]

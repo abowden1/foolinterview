@@ -68,10 +68,26 @@ class Quotes:
     def __init__(self):
         self.file = config.QUOTES_FILE
         self.quotes = self._load_quotes()
+        self.display_quotes = self.generate_display_quotes()
 
     def _load_quotes(self):
         with open(self.file) as f:
             data = f.read()
         quotes = json.loads(data)
         return quotes
+
+    def generate_display_quotes(self):
+        if not self.quotes:
+            self._load_quotes()
+        display = []
+        for i in range(config.QUOTE_TABLE_COUNT):
+            try:
+                index = random.randint(0, len(self.quotes) - 1)
+                display.append(self.quotes.pop(index))
+            except:
+                pass
+        # re-add to original list for use later
+        for quote in display:
+            self.quotes.append(quote)
+        return display
 

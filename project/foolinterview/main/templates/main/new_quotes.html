@@ -1,0 +1,12 @@
+{% for quote in quotes %}
+<tr>
+  <th scope="row"></th>
+  <td>{{quote.CompanyName}}</td>
+  <td>{{quote.Symbol}}</td>
+  <td>
+      <a href="https://www.fool.com/quote/{{quote.Exchange}}/{{quote.SeoName}}/{{quote.Symbol}}/">
+        {{quote.ClosePrice.Amount}} ({{quote.CurrencyCode}})
+      </a>
+  </td>
+</tr>
+{% endfor %}

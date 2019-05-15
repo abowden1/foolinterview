@@ -119,9 +119,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]
 
 CONTENT_FILE = BASE_DIR + '/content/content_api.json'
 QUOTES_FILE = BASE_DIR + '/content/quotes_api.json'
 
 FEATURED_ARTICLE_SLUG = '10-promise'
 SECONDARY_ARTICLE_COUNT = 3
+QUOTE_TABLE_COUNT = 10

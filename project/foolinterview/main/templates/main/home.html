@@ -1,21 +1,84 @@
 {% extends 'main/layouts.html' %}
 
-{% block primary %}
-    <div class="container" align="center">
-        <h1>
-            <a href="/articles/a/{{primary.uuid}}">{{ primary.headline }}</a>
-        </h1>
-        <h4 align="center">{{primary.promo}}</h4>
+{% block body %}
+
+<body>
+    <div class="container content-inner">
+        <div id="primary-article" class="container-fluid" style="background-image: url({{primary_image}}">
+            <div class="jumbotron">
+                <div class="container" align="center">
+                    <h1>
+                        {{ primary.headline }}
+                    </h1>
+                    <h5 align="center">
+                        {{primary.promo}}
+                    </h5>
+                    <br>
+                    <div align="center">
+                        <a href="/articles/a/{{primary.uuid}}">
+                        <button type="button" class="btn btn-outline-dark">
+                            Read More
+                        </button>
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container content-inner">
+
+            <div id="article-cards" class="container">
+                {% for article in secondary %}
+                <div class="card border-dark" style="width: 18rem;">
+
+                    <div class="card-body">
+                        <div class="container">
+                            <img class="card-img-top" src="{{article.primary_image}}">
+                        </div>
+                        <h4 class="card-title" align="center">
+                            {{ article.headline }}
+                        </h4>
+                        <p class="card-text" align="center">
+                            <!--{{ article.promo }}-->
+                        </p>
+                    </div>
+                    <div align="center">
+                        <a href="/articles/a/{{article.uuid}}">
+                        <button type="button" class="btn btn-outline-dark">
+                            Read More
+                        </button>
+                    </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
     </div>
-{% endblock %}
-
-{% block secondary %}
-
-{% for article in secondary %}
-    <div class="container">
-        <a href="/articles/a/{{article.uuid}}">{{ article.headline }}</a>
-        <p align="center">{{ article.promo }}</p>
-    </div>
-{% endfor %}
+</body>
 
 {% endblock %}
+<!--{% block primary %}-->
+    <!--<div class="container" align="center">-->
+        <!--<h1>-->
+            <!--<a href="/articles/a/{{primary.uuid}}">{{ primary.headline }}</a>-->
+        <!--</h1>-->
+        <!--<h4 align="center">{{primary.promo}}</h4>-->
+    <!--</div>-->
+<!--{% endblock %}-->
+
+<!--{% block secondary %}-->
+
+<!--{% for article in secondary %}-->
+    <!--<div class="container col-lg-4">-->
+        <!--<div class="card border">-->
+            <!--<div class="card-body">-->
+                <!--<a href="/articles/a/{{article.uuid}}">-->
+                    <!--<h5>{{ article.headline }}</h5>-->
+                <!--</a>-->
+                <!--<p align="center">{{ article.promo }}</p>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--{% endfor %}-->
+
+<!--{% endblock %}-->
