@@ -35,14 +35,6 @@ def article(request, uuid):
                'comments' : comments}
     return render(request, 'main/article.html', context=context)
 
-def shuffle(request):
-    if request.method == 'GET':
-        context = {'quotes' : Quotes().display_quotes}
-        return render(request, 'main/new_quotes.html', context=context)
-    else:
-        return redirect('/')
-
-
 def get_images(articles):
     if not type(articles) == list:
         articles = [articles]

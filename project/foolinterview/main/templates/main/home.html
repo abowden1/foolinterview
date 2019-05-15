@@ -1,7 +1,6 @@
 {% extends 'main/layouts.html' %}
 
 {% block body %}
-
 <body>
     <div class="container content-inner">
         <div id="primary-article" class="container-fluid" style="background-image: url({{primary_image}}">
@@ -51,30 +50,4 @@
         </div>
     </div>
 </body>
-
 {% endblock %}
-<!--{% block primary %}-->
-    <!--<div class="container" align="center">-->
-        <!--<h1>-->
-            <!--<a href="/articles/a/{{primary.uuid}}">{{ primary.headline }}</a>-->
-        <!--</h1>-->
-        <!--<h4 align="center">{{primary.promo}}</h4>-->
-    <!--</div>-->
-<!--{% endblock %}-->
-
-<!--{% block secondary %}-->
-
-<!--{% for article in secondary %}-->
-    <!--<div class="container col-lg-4">-->
-        <!--<div class="card border">-->
-            <!--<div class="card-body">-->
-                <!--<a href="/articles/a/{{article.uuid}}">-->
-                    <!--<h5>{{ article.headline }}</h5>-->
-                <!--</a>-->
-                <!--<p align="center">{{ article.promo }}</p>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--{% endfor %}-->
-
-<!--{% endblock %}-->

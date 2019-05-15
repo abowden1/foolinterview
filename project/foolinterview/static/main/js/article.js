@@ -22,19 +22,6 @@ $(document).ready(function() {
         var comment = document.getElementById('comment').value;
         var post_data = {'uuid': uuid,
                          'comment': comment};
-        console.log(post_data)
-        console.log(csrftoken)
-//        function csrfSafeMethod(method) {
-//            // these HTTP methods do not require CSRF protection
-//            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-//        }
-//        $.ajaxSetup({
-//            beforeSend: function(xhr, settings) {
-//                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-//                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
-//                }
-//            }
-//        });
         $.ajax({
             url: '/addcomment/post/',
             method: 'POST',
